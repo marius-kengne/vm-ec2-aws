@@ -1,0 +1,5 @@
+app_region = "us-east-1"
+ec2_instance_name = "vm-ec2-ppd"
+instance_type = "t3.micro"
+private_key_path = "./.Secrets/"
+private_key_name = "vm_ec2_ppd_key"
