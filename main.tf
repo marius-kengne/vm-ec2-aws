@@ -104,7 +104,15 @@ resource "null_resource" "provision_docker" {
       "curl -fsSL https://get.docker.com | sudo sh",
       "sudo usermod -aG docker ubuntu || true",
       "sudo systemctl enable docker && sudo systemctl start docker",
-      "docker --version || true"
+      "docker --version || true",
+
+            # Deploy Jenkins
+      "echo '****************** Deploy Jenkins compose ******************'",
+      "sudo mkdir -p /opt/jenkins-compose",
+      "sudo git clone https://github.com/marius-kengne/jenkins-docker-compose.git /opt/jenkins-compose || (cd /opt/jenkins-compose && sudo git pull)",
+      "sudo docker compose -f /opt/jenkins-compose/docker-compose.yaml up -d",
+      "sudo docker ps -a",
+
     ]
   }
 }
